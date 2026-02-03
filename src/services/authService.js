@@ -1,24 +1,8 @@
-/* 
-En estos archivos buscamos centralizar la configuracion y llamada a servicios externos de nuestro frontend
-Un ejemplo de esto puede ser:
-- API INTERNA
-- API EXTERNA
-- Libreria que necesite una configuracion
-*/
-
 import { ServerError } from "../utils/errorUtils"
 
-/* 
-fetch es una funcion que nos permite hacer peticiones HTTP a un servidor
-Se lo usa entre otras cosas para comunicarnos con API (Servidores HTTP)
-En criollo es la forma de interactuar con el backend y lo podriamos comparar con hacer una solicitud http desde postman
 
-fecth recibe 2 paremetros
-- URL de consulta
-- Un objeto de configuracion
-*/
 
-const URL_API = 'http://localhost:8080'
+const URL_API = import.meta.env.VITE_API_URL
 
 export async function login(email, password) {
     const response_http = await fetch(
@@ -78,3 +62,6 @@ response body example:
     "data": null
 }
 */
+
+console.log('Todas las env:', import.meta.env);
+console.log('Mi URL:', import.meta.env.VITE_API_URL);
